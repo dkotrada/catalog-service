@@ -1,3 +1,4 @@
+# tomcat.connection-timeout how long to wait between tcp ack and receiving http request
 server:
   port: 9001
   tomcat:
