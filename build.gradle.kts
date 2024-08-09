@@ -1,3 +1,6 @@
+import org.gradle.internal.classpath.Instrumented.systemProperty
+import org.springframework.boot.gradle.tasks.run.BootRun
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.3.2"
@@ -31,4 +34,9 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+// define active profile vor development
+tasks.named<BootRun>("bootRun") {
+	systemProperty("spring.profiles.active", "testdata")
 }
