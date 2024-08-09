@@ -15,7 +15,14 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	val compileOnly by configurations.getting {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
+}
+
 dependencies {
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -7,3 +7,7 @@ server:
     threads:
       max: 30 # decrease resources usage. default 200
       min-spare: 3 # default 10
+
+polar:
+  greeting: "Welcome to the local book catalog."
+  
