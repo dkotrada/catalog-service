@@ -1,4 +1,3 @@
-import org.gradle.internal.classpath.Instrumented.systemProperty
 import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
@@ -24,6 +23,8 @@ configurations {
 	}
 }
 
+extra["springCloudVersion"] = "2023.0.3"
+
 dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
@@ -31,6 +32,12 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+	}
 }
 
 tasks.withType<Test> {
