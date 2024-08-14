@@ -18,6 +18,9 @@ management:
         include: refresh
 
 spring:
+  sql:
+    init:
+      mode: always
   datasource:
     username: user
     password: password
