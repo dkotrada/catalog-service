@@ -38,6 +38,6 @@ public record Book (
         int version
 ){
         public static Book of(String isbn, String title, String author, Double price) {
-                return new Book(null, isbn, title, author, price, 0);
+                return new Book(null, null, null, isbn, title, author, price, 0);
         }
 }
