@@ -27,6 +27,8 @@ extra["springCloudVersion"] = "2023.0.3"
 
 dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("org.springframework.retry:spring-retry")
