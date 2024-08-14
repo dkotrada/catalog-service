@@ -36,10 +36,12 @@ public class BookService {
                     // When editing the book, all the Book fields can be updated except the ISBN code,
                     // because it’s the entity identifier.
                     var bookToUpdate = new Book(
+                            existingBook.id(),
                             existingBook.isbn(),
                             book.title(),
                             book.author(),
-                            book.price()
+                            book.price(),
+                            existingBook.version()
                     );
                     return bookRepository.save(bookToUpdate);
                 })

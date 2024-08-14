@@ -26,7 +26,7 @@ class CatalogServiceApplicationTests {
     @Test
     @DisplayName("When POST request then Book created.")
     void whenPostRequestThenBookCreated() {
-        var expectBook = new Book("1231231231", "Title", "Author", 9.90);
+        var expectBook = Book.of("1231231231", "Title", "Author", 9.90);
 
         webtestClient
                 .post()

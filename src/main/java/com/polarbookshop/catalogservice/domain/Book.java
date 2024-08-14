@@ -25,4 +25,8 @@ public record Book (
         Double price,
         @Version
         int version
-){}
+){
+        public static Book of(String isbn, String title, String author, Double price) {
+                return new Book(null, isbn, title, author, price, 0);
+        }
+}
