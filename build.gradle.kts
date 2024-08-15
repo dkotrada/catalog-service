@@ -23,7 +23,8 @@ configurations {
 	}
 }
 
-extra["springCloudVersion"] = "2023.0.3"
+val springCloudVersion by extra("2023.0.3")
+val testcontainersVersion by extra("1.20.1")
 
 dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -36,11 +37,13 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
+	testImplementation("org.testcontainers:postgresql")
 }
 
 dependencyManagement {
 	imports {
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+		mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
 	}
 }
 
