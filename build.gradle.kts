@@ -24,17 +24,23 @@ configurations {
 }
 
 val springCloudVersion by extra("2023.0.3")
-val testcontainersVersion by extra("1.20.1")
 
 dependencies {
-	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-	runtimeOnly("org.postgresql:postgresql")
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	// org.springframework
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.cloud:spring-cloud-starter-config")
-	implementation("org.springframework.retry:spring-retry")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.cloud:spring-cloud-starter-config")
+	implementation("org.springframework.retry:spring-retry")
+
+	// org.flywaydb
+	implementation("org.flywaydb:flyway-core")
+	implementation("org.flywaydb:flyway-database-postgresql")
+
+	runtimeOnly("org.postgresql:postgresql")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
 	testImplementation("org.testcontainers:postgresql")
@@ -43,7 +49,6 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
-		mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
 	}
 }
 
