@@ -27,7 +27,7 @@ public class BookValidationTests {
     @Test
     @DisplayName("When all tests correct then validation succeeds.")
     void whenAllTestsCorrectThenValidationSucceeds(){
-        var book = Book.of("1234567890", "Title", "Author", 9.99);
+        var book = Book.of("1234567890", "Title", "Author", 9.99, "Manning");
         Set<ConstraintViolation<Book>> violationSet = validator.validate(book);
         assertThat(violationSet).isEmpty();
     }
@@ -35,7 +35,7 @@ public class BookValidationTests {
     @Test
     @DisplayName("When ISBN defined but incorrect then validation fails")
     void whenIsbnDefinedButIncorrectThenValidationFails(){
-        var book = Book.of("X234567890", "Title", "Author", 9.99);
+        var book = Book.of("X234567890", "Title", "Author", 9.99, "Manning");
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
         assertThat(violations).hasSize(1);
         assertThat(violations.iterator().next().getMessage()).isEqualTo("The ISBN format must be valid.");
