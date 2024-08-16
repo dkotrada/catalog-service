@@ -23,8 +23,8 @@ public class BookDataLoader {
     @EventListener(ApplicationReadyEvent.class)
     public void loadBookTestData() {
         bookRepository.deleteAll();
-        Book bookOne = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.90);
-        Book bookTwo = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.90);
+        Book bookOne = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.90, "Springer");
+        Book bookTwo = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.90, "Manning");
         bookRepository.saveAll(List.of(bookOne, bookTwo));
     }
 }
