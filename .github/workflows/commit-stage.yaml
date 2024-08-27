@@ -57,7 +57,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          chache: gradle
+          cache: gradle
       - name: Build container image
         run: |
           chmod +x gradlew
@@ -82,5 +82,5 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publisch container image
+      - name: Publish container image
         run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
