@@ -18,11 +18,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("integration")
 class CatalogServiceApplicationTests {
 
-    private final WebTestClient webtestClient;
+    private WebTestClient webTestClient;
 
     @Autowired
-    public CatalogServiceApplicationTests(WebTestClient webtestClient) {
-        this.webtestClient = webtestClient;
+    public CatalogServiceApplicationTests(WebTestClient webTestClient) {
+        this.webTestClient = webTestClient;
     }
 
     @Test
@@ -30,7 +30,7 @@ class CatalogServiceApplicationTests {
     void whenPostRequestThenBookCreated() {
         var expectBook = Book.of("1231231231", "Title", "Author", 9.90, "Manning");
 
-        webtestClient
+        webTestClient
                 .post()
                 .uri("/books")
                 .bodyValue(expectBook)
