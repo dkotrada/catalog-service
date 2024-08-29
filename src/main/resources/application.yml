@@ -1,6 +1,7 @@
 # tomcat.connection-timeout how long to wait between tcp ack and receiving http request
 server:
   port: 9001
+  shutdown: graceful
   tomcat:
     connection-timeout: 2s # default is 20s
     keep-alive-timeout: 15s
@@ -27,6 +28,8 @@ spring:
       maximum-pool-size: 5
   application:
     name: catalog-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   config:
     import: "optional:configserver:"
   cloud:
@@ -40,5 +43,3 @@ spring:
         initial-interval: 1000
         max-interval: 2000
         multiplier: 1.1
-
-  
